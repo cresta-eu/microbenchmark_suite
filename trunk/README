@@ -1,0 +1,37 @@
+******************************
+How to use makefile
+******************************
+
+1) make clean
+
+2) make all coll=gather
+
+Valid options for coll: gather, allGather, allReduce, barrier, broadcast
+
+3) make run coll=gather
+
+
+*******************************
+Control variables in Make file:
+*******************************
+
+paradigm=mpi
+//Use to indicate which paradigm is benchmarked and make appropriate changes
+//in code using preprocessor.
+//Right now only mpi collectives are benchmarked. Others (UPC, Co-array)  will be added later.
+
+delayRank= //delayRank tells about rank which needs to delayed.
+delay=     //tells about much a particular rank should be delayed.
+
+//This benchmark can be used to test collective around range of process.
+//This range can be selected using below mentioned variables.
+//Number of process using collectives will increment from startNo to endNo, by the power of 2.
+startNo=
+endNo=
+
+//Data size used by collectives can be varied in this benchmark.
+//Data size range can be specified by below mentioned variables.
+//Values between lower and upper limits is incremented by the power of 2.
+dataStart=
+dateEnd=
+
